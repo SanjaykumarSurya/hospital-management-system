@@ -1,0 +1,51 @@
+<div>
+  <h2>Patients</h2>
+  <button mat-raised-button color="primary" [routerLink]="'add'">Register Patient</button>
+
+  <table mat-table [dataSource]="Patients" class="mat-elevation-z8 full-width-table">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let p">{{ p.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef>Age</th>
+      <td mat-cell *matCellDef="let p">{{ p.age }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell *matCellDef="let p">{{ p.gender }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="contact">
+      <th mat-header-cell *matHeaderCellDef>Contact</th>
+      <td mat-cell *matCellDef="let p">{{ p.contact }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <th mat-header-cell *matHeaderCellDef>Address</th>
+      <td mat-cell *matCellDef="let p">{{ p.address }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="medicalHistory">
+      <th mat-header-cell *matHeaderCellDef>Medical History</th>
+      <td mat-cell *matCellDef="let p">{{ p.medicalHistory }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let p">
+        <button mat-button color="accent" [routerLink]="['edit', p._id]">Edit</button>
+        <button mat-button color="warn" (click)="deletePatient(p._id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let p; columns: displayedColumns"[attr.data-id]="p._id"></tr>
+  </table>
+  <!-- Optional: No records message -->
+  <div *ngIf="Patients.length === 0">
+  <p>No patients found.</p>
+</div>
+</div>

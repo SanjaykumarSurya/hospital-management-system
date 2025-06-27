@@ -1,0 +1,15 @@
+<h3>Register Patient</h3>
+<form [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+  <label>Name: <input formControlName="name" /></label><br />
+  <label>Email: <input formControlName="email" /></label><br />
+  <label>Age: <input formControlName="age" type="number" /></label><br />
+  <label>Gender:
+    <select formControlName="gender">
+      <option value="">Select</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </label><br />
+  <label>Phone: <input formControlName="phone" /></label><br />
+  <button type="submit" [disabled]="patientForm.invalid">Register</button>
+</form>

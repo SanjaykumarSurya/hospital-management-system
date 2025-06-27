@@ -1,0 +1,24 @@
+<div>
+  <h3 class="head1">HOSPITAL MANAGEMENT SYSTEM</h3>
+<div class="login-container">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <h2>Login</h2>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+      Login
+    </button>
+
+    <div class="error" *ngIf="error">{{ error }}</div>
+  </form>
+</div>
+</div>

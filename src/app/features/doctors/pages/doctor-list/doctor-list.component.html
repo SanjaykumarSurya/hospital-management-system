@@ -1,0 +1,70 @@
+<div class="doctor-list-container">
+  <h2>Doctors</h2>
+
+  <div class="header-actions">
+    <button mat-raised-button color="primary" routerLink="add">Add Doctor</button>
+
+    <mat-form-field appearance="outline" class="filter-field">
+      <mat-label>Filter by Specialization</mat-label>
+      <input matInput [(ngModel)]="filter" (ngModelChange)="applyFilter()" placeholder="e.g. Cardiologist" />
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="filteredDoctors" class="mat-elevation-z8 full-width-table">
+
+    <!-- Name -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let d">{{ d.name }}</td>
+    </ng-container>
+
+    <!-- Specialization -->
+    <ng-container matColumnDef="specialization">
+      <th mat-header-cell *matHeaderCellDef>Specialization</th>
+      <td mat-cell *matCellDef="let d">{{ d.specialization }}</td>
+    </ng-container>
+
+    <!-- Phone -->
+    <ng-container matColumnDef="phone">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let d">{{ d.phone }}</td>
+    </ng-container>
+
+    <!-- Email -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let d">{{ d.email }}</td>
+    </ng-container>
+
+    <!-- Available Days -->
+    <ng-container matColumnDef="availabledays">
+      <th mat-header-cell *matHeaderCellDef>Available Days</th>
+      <td mat-cell *matCellDef="let d">{{ d.availabledays }}</td>
+    </ng-container>
+
+    <!-- Time Slot -->
+    <ng-container matColumnDef="timeslot">
+      <th mat-header-cell *matHeaderCellDef>Time Slot</th>
+      <td mat-cell *matCellDef="let d">{{ d.timeslot }}</td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let d">
+        <button mat-stroked-button color="accent" [routerLink]="['edit', d._id]">Edit</button>
+        <button mat-stroked-button color="warn" (click)="deleteDoctor(d._id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Header and Row Declarations -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+
+  <!-- Optional: No records message -->
+  <div *ngIf="filteredDoctors.length === 0" class="no-records">
+    <p>No doctors found.</p>
+  </div>
+</div>

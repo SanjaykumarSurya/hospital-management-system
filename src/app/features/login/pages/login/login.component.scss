@@ -1,0 +1,127 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Jolly+Lodger&family=Slackey&family=Stalinist+One&display=swap');
+
+
+// Mixin for responsive breakpoints
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 600px) { @content; }
+  }
+  @else if $breakpoint == tablet {
+    @media (max-width: 900px) { @content; }
+  }
+  @else if $breakpoint == desktop {
+    @media (min-width: 901px) { @content; }
+  }
+}
+
+// Fonts
+$font-primary: 'Poppins', sans-serif;
+$font-heading: 'Montserrat', sans-serif;
+
+// Colors
+$bg-color: #ffffff;
+$form-bg: rgba(255, 255, 255, 0.95);
+$primary-color: #1976d2;
+$input-border: #ccc;
+$input-focus: $primary-color;
+
+// Background image
+body {
+  margin: 0;
+  font-family: $font-primary;
+ 
+  background-size: cover;
+}
+
+.head1 {
+  position: absolute;
+  font-family: "Stalinist One";
+  
+  color:rgb(2, 153, 222);
+  text-shadow: 3px 1.5px  rgb(216, 216, 216);
+}
+// Container
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+
+  height: 95.7vh;
+  // width: 100vw;
+
+  padding: 1rem;
+
+  background-image: url('/hospital-bg.jpg');
+  background-size: cover;        // Ensures image covers entire screen
+  background-position: center;   // Center the image
+  background-repeat: no-repeat;  // Prevent tiling
+  overflow: hidden;              // Prevent scrollbars from showing
+}
+
+  form {
+    background: $form-bg;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+
+    h2 {
+      font-family: $font-heading;
+      margin-bottom: 1.5rem;
+      color: $primary-color;
+      font-size: 30px;
+    }
+   
+
+    .mat-form-field {
+      margin-bottom: 1rem;
+      width: 100%;
+
+
+      .mat-form-field-outline {
+        border-radius: 10px;
+      }
+
+      input {
+        font-family: $font-primary;
+        padding: 0.75rem;
+        
+      }
+    }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.75rem;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .error {
+      color: red;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+    }
+  }
+  .full-width {
+    width:100%;
+  }
+  // Mobile styles
+  @include respond(phone) {
+    form {
+      padding: 1.5rem;
+      max-width: 100%;
+    }
+  }
+
+  // Tablet styles
+  @include respond(tablet) {
+    form {
+      padding: 2rem;
+    }
+  }
+

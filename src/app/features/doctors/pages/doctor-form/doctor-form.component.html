@@ -1,0 +1,38 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>{{ isEdit ? 'Edit Doctor' : 'Add Doctor' }}</h2>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Specialization</mat-label> 
+    <input matInput formControlName="specialization" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Phone</mat-label>
+    <input matInput formControlName="phone" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Available Days</mat-label> 
+    <input matInput formControlName="availabledays" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Time Slot</mat-label>
+    <input matInput formControlName="timeslot" />
+  </mat-form-field>
+
+  <button type="submit">
+    {{ isEdit ? 'Update' : 'Create' }} Doctor
+  </button>
+</form>
+<router-outlet></router-outlet>
