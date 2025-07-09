@@ -1,9 +1,8 @@
-<div>
+<div class="appointment-list-container">
   <h2>Appointments</h2>
-  <button mat-raised-button color="primary" [routerLink]="'book'">Book Appointment</button>
+
 
   <table mat-table *ngIf="appointments.length > 0" [dataSource]="appointments" class="mat-elevation-z8 full-width-table">
-
     <ng-container matColumnDef="no">
       <th mat-header-cell *matHeaderCellDef>No.</th>
       <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
@@ -43,7 +42,9 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef>Actions</th>
       <td mat-cell *matCellDef="let a">
-        <button mat-button color="accent" [routerLink]="['edit', a._id]">Edit</button>
+        <button mat-button color="accent" [routerLink]="['/dashboard/reception/appointments/edit', a._id]">
+  Edit
+</button>
         <button mat-button color="warn" (click)="deleteAppointment(a._id)">Cancel</button>
       </td>
     </ng-container>

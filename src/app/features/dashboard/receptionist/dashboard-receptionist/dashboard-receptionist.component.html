@@ -1,2 +1,10 @@
+<h1>HOSPITAL MANAGEMENT SYSTEM</h1>
 <h2>Receptionist Dashboard</h2>
-<p>Welcome! Use the sidebar or links above to register patients or book appointments.</p>
+<p>Welcome! Use the links to register patients or book appointments.</p>
+<nav>
+      <a routerLink="patients/register" routerLinkActive="active">Register Patient</a> 
+       <a routerLink="patients/list" routerLinkActive="active">Patient List</a> 
+      <a routerLink="appointments/book" routerLinkActive="active">Book Appointment</a> 
+       <a routerLink="appointments/list" routerLinkActive="active">Appointment List</a>
+    </nav>
+    <router-outlet></router-outlet>

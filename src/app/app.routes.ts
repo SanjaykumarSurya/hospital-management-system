@@ -25,6 +25,8 @@ import { ReceptionistAppointmentFormComponent } from './features/receptionist/pa
 
 // Fallback / Shared
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { ReceptionistPatientListComponent } from './features/receptionist/pages/receptionist-patient-list/receptionist-patient-list.component';
+import { ReceptionistAppointmentListComponent } from './features/receptionist/pages/receptionist-appointment-list/receptionist-appointment-list.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +57,7 @@ export const routes: Routes = [
 
       { path: 'appointments', component: AppointmentListComponent },
       { path: 'appointments/book', component: AppointmentFormComponent },
+      { path: 'appointments/edit/:id', component: AppointmentFormComponent },
 
       { path: 'reports', component: ReportListComponent },
       { path: 'reports/upload', component: ReportFormComponent },
@@ -70,7 +73,12 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'patients/register', pathMatch: 'full' },
       { path: 'patients/register', component: ReceptionistPatientFormComponent },
+      { path: 'patients/list', component: ReceptionistPatientListComponent },
+      { path: 'patients/edit/:id', component: ReceptionistPatientFormComponent },
+
       { path: 'appointments/book', component: ReceptionistAppointmentFormComponent },
+      { path: 'appointments/list', component: ReceptionistAppointmentListComponent },
+      { path: 'appointments/edit/:id', component: ReceptionistAppointmentFormComponent },
     ],
   },
 

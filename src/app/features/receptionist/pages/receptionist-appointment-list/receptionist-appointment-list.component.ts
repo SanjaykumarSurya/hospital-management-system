@@ -1,29 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { AppointmentService } from '../../appointment.service';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { NavigationEnd, Router, RouterLink, RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { NavigationEnd, Router, RouterLink, RouterModule } from '@angular/router';
 import { Appointment } from '../../../../shared/models/appointment.model';
+import { AppointmentService } from '../../../appointments/appointment.service';
 import { filter } from 'rxjs';
 
 @Component({
-  standalone: true,
-  imports: [
-    CommonModule,
+  selector: 'app-receptionist-appointment-list',
+  imports: [CommonModule,
     MatTableModule,
     MatButtonModule,
     RouterLink,
     RouterModule,
     MatFormFieldModule,
-    MatInputModule,
-  ],
-  templateUrl: './appointment-list.component.html',
-  styleUrls:['./appointment-list.component.scss']
+    MatInputModule,],
+  templateUrl: './receptionist-appointment-list.component.html',
+  styleUrl: './receptionist-appointment-list.component.scss'
 })
-export class AppointmentListComponent implements OnInit {
+export class ReceptionistAppointmentListComponent implements OnInit {
   appointments: Appointment[] = [];
   displayedColumns: string[] = ['no', 'doctorName', 'patientName', 'date', 'status', 'notes', 'actions'];
 
@@ -66,3 +64,4 @@ export class AppointmentListComponent implements OnInit {
     }
   }
 }
+

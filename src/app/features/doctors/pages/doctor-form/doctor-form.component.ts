@@ -19,6 +19,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule
   ],
   templateUrl: './doctor-form.component.html',
+  styleUrls: ['./doctor-form.component.scss']
 })
 export class DoctorFormComponent implements OnInit {
   form!: FormGroup;
@@ -81,14 +82,16 @@ export class DoctorFormComponent implements OnInit {
 
     const role = localStorage.getItem('role');
     const path = role === 'reception' ? 'reception' : 'admin';
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
 
     this.router.navigate([`/dashboard/${path}/doctors`]);
-  },
-  error: (err) => {
+  }),
+  Error; (err: any) => {
     console.error('Error while saving the doctor:', err);
     alert('Error while saving the doctor. Please try again.');
   }
-});
+},
+   });
 }
 };
 

@@ -1,8 +1,50 @@
-h3 {
-  margin-bottom: 1rem;
-}
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.form-container {
+  background: #f3f8fd;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  max-width: 800px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #3f51b5;
+  }
+
+  .full-width {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  mat-form-field {
+    background: white;
+    border-radius: 6px;
+  }
+
+  mat-select,
+  input {
+    font-size: 0.95rem;
+  }
+
+  button[type="submit"] {
+    display: block;
+    margin: 1.5rem auto 0;
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    background: linear-gradient(to right, #42a5f5, #1e88e5);
+    color: white;
+    transition: background 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(to right, #1e88e5, #1565c0);
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      color: #666;
+    }
+  }
 }

@@ -1,8 +1,43 @@
-<h3>Book Appointment</h3>
-<form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-  <label>Patient ID: <input formControlName="patientId" /></label><br />
-  <label>Doctor ID: <input formControlName="doctorId" /></label><br />
-  <label>Date: <input type="date" formControlName="date" /></label><br />
-  <label>Time: <input type="time" formControlName="time" /></label><br />
-  <button type="submit" [disabled]="appointmentForm.invalid">Book</button>
+<div class="form-container">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+   <h2>{{ isEdit ? 'Edit' : 'Book' }} Appointment</h2>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>PatinetId</mat-label>
+    <mat-select formControlName="patientId">
+      <mat-option *ngFor="let p of patients" [value]="p._id">{{ p.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>DoctorId</mat-label>
+    <mat-select formControlName="doctorId">
+      <mat-option *ngFor="let d of doctors" [value]="d._id">{{ d.name }} ({{ d.specialization }})</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Date</mat-label>
+    <input matInput type="date" formControlName="date" />
+  </mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+  <mat-label>Status</mat-label>
+  <mat-select formControlName="status">
+    <mat-option *ngFor="let status of statuses" [value]="status">
+      {{ status }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Notes</mat-label>
+    <input matInput formControlName="notes" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+     {{ isEdit ? 'Update' : 'Book' }} Appointment
+  </button>
 </form>
+</div>
+<router-outlet></router-outlet>

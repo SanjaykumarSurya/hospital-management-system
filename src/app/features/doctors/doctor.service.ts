@@ -11,9 +11,9 @@ export class DoctorService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(this.apiUrl);
-  }
+getAll(params: { skip?: number, limit?: number } = {}): Observable<any> {
+  return this.http.get<any>(this.apiUrl, { params });
+}
 
   getById(id: string): Observable<Doctor> {
     return this.http.get<Doctor>(`${this.apiUrl}/${id}`);
@@ -23,8 +23,8 @@ export class DoctorService {
     return this.http.post<Doctor>(this.apiUrl, doctor);
   }
 
-  update(_id: string, doctor: Doctor): Observable<Doctor> {
-    return this.http.put<Doctor>(`${this.apiUrl}`, doctor);
+  update(id: string, doctor: Doctor): Observable<Doctor> {
+    return this.http.put<Doctor>(`${this.apiUrl}/${id}`, doctor);
   }
 
   delete(id: string): Observable<any> {

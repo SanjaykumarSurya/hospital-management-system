@@ -1,43 +1,29 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PatientService } from '../../patient.service';
-import { NavigationEnd, Router, RouterLink, RouterModule } from '@angular/router';
-import { MatTableModule } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatTableModule } from '@angular/material/table';
+import { NavigationEnd, Router, RouterLink, RouterModule } from '@angular/router';
 import { Patient } from '../../../../shared/models/patient.model';
+import { PatientService } from '../../../patients/patient.service';
 import { filter } from 'rxjs';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
-  selector: 'app-patient-list',
-  imports: [
-    CommonModule,
+  selector: 'app-receptionist-patient-list',
+  imports: [CommonModule,
     MatTableModule,
     MatButtonModule,
     RouterLink,
     RouterModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatPaginatorModule,
-    FormsModule
-  ],
-  templateUrl: './patient-list.component.html',
-  styleUrls: ['./patient-list.component.scss'],
-  //  encapsulation: ViewEncapsulation.None,
+    MatInputModule],
+  templateUrl: './receptionist-patient-list.component.html',
+  styleUrl: './receptionist-patient-list.component.scss'
 })
-export class PatientListComponent implements OnInit {
+export class ReceptionistPatientListComponent implements OnInit {
   Patients: Patient[] = [];
-  displayedColumns: string[] = ['no','name', 'age', 'gender', 'contact', 'address', 'medicalHistory', 'actions'];
-
-  page = 0;
-  limit = 5;
-  totalCount = 0;
-  service: any;
-  items: any;
+  displayedColumns: string[] = ['no', 'name', 'age', 'gender', 'contact', 'address', 'medicalHistory', 'actions'];
 
   constructor(private patientService: PatientService, private router: Router) {}
 
@@ -49,26 +35,19 @@ export class PatientListComponent implements OnInit {
   this.fetchPatients();
 }
 
-  fetchPatients() {
-    this.patientService.getAll({ skip: this.page * this.limit, limit: this.limit }).subscribe({
+  fetchPatients(): void {
+    this.patientService.getAll().subscribe({
       next: (response: any) => {
         console.log('Fetched response:', response);
         // response must be in the form: { Patients: [...], totalCount: number }
         // this.Patients = Array.isArray(response.Patients) ? response.Patients : [];
         this.Patients = response.Patients || [];
-        this.totalCount = response.totalCount;
       },
       error: (err) => {
         console.error('Failed to load patients:', err);
         alert('Error loading patient list. Please check the server.');
       }
     });
-  }
-
-  onPageChange(event: PageEvent) {
-  this.page = event.pageIndex ;
-  this.limit = event.pageSize;
-  this.fetchPatients(); // call your API
   }
 
   deletePatient(id: string): void {
@@ -86,3 +65,4 @@ export class PatientListComponent implements OnInit {
     }
   }
 }
+

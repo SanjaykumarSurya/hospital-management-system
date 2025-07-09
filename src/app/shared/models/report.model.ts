@@ -1,8 +1,8 @@
 export interface Report {
   _id?: string;
   patientId: string;
+  doctorName: string;
   description: string;
-  prescription: string;
   fileUrl: string;
-  createdAt?: Date;
+  date: Date;
 }

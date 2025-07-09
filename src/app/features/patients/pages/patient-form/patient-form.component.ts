@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
     RouterModule
   ],
   templateUrl: './patient-form.component.html',
+  styleUrls: ['./patient-form.component.scss'],
 })
 export class PatientFormComponent implements OnInit {
   form!: FormGroup;

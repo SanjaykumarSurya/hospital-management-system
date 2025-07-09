@@ -12,8 +12,8 @@ export class PatientService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<Patient[]> {
-    return this.http.get<Patient[]>(this.apiUrl);
+  getAll(params: { skip?: number, limit?: number } = {}): Observable<any> {
+    return this.http.get<any>(this.apiUrl, { params });
   }
 
   getById(id: string): Observable<Patient> {

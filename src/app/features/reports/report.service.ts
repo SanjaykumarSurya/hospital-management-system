@@ -6,23 +6,25 @@ import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class ReportService {
-  private baseUrl = `${environment.apiUrl}/reports`;
+  private apiUrl = 'http://localhost:3000/api/reports';
 
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Report[]> {
-    return this.http.get<Report[]>(this.baseUrl);
+    return this.http.get<Report[]>(this.apiUrl);
   }
 
   getByPatient(patientId: string): Observable<Report[]> {
-    return this.http.get<Report[]>(`${this.baseUrl}/patient/${patientId}`);
+    return this.http.get<Report[]>(`${this.apiUrl}/patient/${patientId}`);
   }
 
   upload(data: FormData): Observable<Report> {
-    return this.http.post<Report>(this.baseUrl, data);
+    return this.http.post<Report>(this.apiUrl, data);
   }
 
   delete(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
+
+  
 }

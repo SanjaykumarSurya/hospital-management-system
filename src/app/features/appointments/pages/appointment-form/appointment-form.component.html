@@ -1,8 +1,8 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2>{{ isEdit ? 'Edit' : 'Book' }} Appointment</h2>
 
   <mat-form-field class="full-width" appearance="outline">
-    <mat-label>Patient</mat-label>
+    <mat-label>Patinet</mat-label>
     <mat-select formControlName="patientId">
       <mat-option *ngFor="let p of patients" [value]="p._id">{{ p.name }}</mat-option>
     </mat-select>
@@ -11,7 +11,7 @@
   <mat-form-field class="full-width" appearance="outline">
     <mat-label>Doctor</mat-label>
     <mat-select formControlName="doctorId">
-      <mat-option *ngFor="let d of doctors" [value]="d._id">{{ d.name }} ({{ d.specialty }})</mat-option>
+      <mat-option *ngFor="let d of doctors" [value]="d._id">{{ d.name }} ({{ d.specialization }})</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -21,11 +21,21 @@
   </mat-form-field>
 
   <mat-form-field class="full-width" appearance="outline">
-    <mat-label>Reason</mat-label>
-    <input matInput formControlName="reason" />
+  <mat-label>Status</mat-label>
+  <mat-select formControlName="status">
+    <mat-option *ngFor="let status of statuses" [value]="status">
+      {{ status }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+  <mat-form-field class="full-width" appearance="outline">
+    <mat-label>Notes</mat-label>
+    <input matInput formControlName="notes" />
   </mat-form-field>
 
   <button mat-raised-button color="primary" type="submit">
     {{ isEdit ? 'Update' : 'Book' }}
   </button>
 </form>
+<router-outlet></router-outlet>

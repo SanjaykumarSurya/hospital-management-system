@@ -6,27 +6,27 @@ import { environment } from '../../../environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class AppointmentService {
-  private baseUrl = `${environment.apiUrl}/appointments`;
+  private apiUrl = 'http://localhost:3000/api/appointments';
 
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(this.baseUrl);
+    return this.http.get<Appointment[]>(this.apiUrl);
   }
 
   getById(id: string): Observable<Appointment> {
-    return this.http.get<Appointment>(`${this.baseUrl}/${id}`);
+    return this.http.get<Appointment>(`${this.apiUrl}/${id}`);
   }
 
   create(data: Appointment): Observable<Appointment> {
-    return this.http.post<Appointment>(this.baseUrl, data);
+    return this.http.post<Appointment>(this.apiUrl, data);
   }
 
   update(id: string, data: Appointment): Observable<Appointment> {
-    return this.http.put<Appointment>(`${this.baseUrl}/${id}`, data);
+    return this.http.put<Appointment>(`${this.apiUrl}/${id}`, data);
   }
 
   delete(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }

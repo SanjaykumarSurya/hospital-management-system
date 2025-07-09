@@ -1,0 +1,113 @@
+// :host {
+//   display: block;
+//   padding: 2rem;
+//   background-color: #f9f9f9;
+//   min-height: 100vh;
+//   font-family: 'Roboto', sans-serif;
+// }
+
+// h2 {
+//   font-size: 1.8rem;
+//   margin-bottom: 1.5rem;
+//   color: #333;
+// }
+
+// form {
+//   max-width: 600px;
+//   margin: 0 auto;
+//   background: #fff;
+//   padding: 2rem;
+//   border-radius: 12px;
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1.5rem;
+
+//   .mat-form-field {
+//     width: 100%;
+//   }
+
+//   button[type="submit"] {
+//     align-self: flex-end;
+//     padding: 0.7rem 1.5rem;
+//     background-color: #1976d2;
+//     color: white;
+//     border: none;
+//     border-radius: 6px;
+//     font-size: 1rem;
+//     font-weight: 500;
+//     cursor: pointer;
+//     transition: background-color 0.3s ease;
+
+//     &:hover {
+//       background-color: #125ea3;
+//     }
+//   }
+// }
+
+:host {
+  display: block;
+  padding: 2rem;
+  background: linear-gradient(to right, #e3f2fd, #fce4ec); // light blue to pink
+  border-radius: 1rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 2rem auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #3f51b5; // Material Indigo
+  margin-bottom: 2rem;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  mat-form-field {
+    width: 100%;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  input {
+    padding: 0.5rem;
+  }
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #4caf50; // green
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #388e3c; // darker green
+    box-shadow: 0 4px 12px rgba(56, 142, 60, 0.4);
+  }
+}
+
+@media (max-width: 600px) {
+  :host {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  button[type="submit"] {
+    font-size: 0.95rem;
+  }
+}
